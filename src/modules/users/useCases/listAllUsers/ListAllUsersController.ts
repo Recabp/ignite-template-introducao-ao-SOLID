@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { stringify } from "uuid";
 
 import { ListAllUsersUseCase } from "./ListAllUsersUseCase";
 
