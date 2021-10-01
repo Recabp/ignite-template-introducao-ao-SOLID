@@ -7,10 +7,13 @@ class TurnUserAdminController {
 
   handle(request: Request, response: Response): Response {
     const { user_id } = request.params;
-
-    this.turnUserAdminUseCase.execute({ user_id });
-
-    return response.status(200).send();
+    try {
+      const user = this.turnUserAdminUseCase.execute({ user_id });
+      return response.status(200).send(user);
+    } catch (err) {
+      const error = { error: "deu erro" };
+      return response.status(404).send(error);
+    }
   }
 }
 
